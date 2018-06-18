@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApp.Models.OrderDetail>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="products">
+    <h3>Товары</h3>
+    <form action="/Home/SendData" method="post" class="form-inline pull-right">
+        <div class="form-group mb-2">
+            <label for="from">От</label>
+            <input type="date" class="form-control" id="fromDate" name="fromDate" placeholder="">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="to">До</label>
+            <input type="date" class="form-control" id="toDate" name="toDate" placeholder="">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="email" class="sr-only">Email</label>
+            <input type="text" class="form-control" id="email" name="email" placeholder="Email для отправки отчета.." required>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Сформировать и отправить</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <td><p>Номер заказа</p></td>
+                <td><p>Дата заказа</p></td>
+                <td><p>Название товара</p></td>
+                <td><p>Кол-во реализованных ед.</p></td>
+                <td><p>Цена реализации за ед.</p></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (WebApp.Models.OrderDetail p in Model)
+            {
+                <tr>
+                    <td><p>@p.Order.ID</p></td>
+                    <td><p>@p.Order.OrderDate</p></td>
+                    <td><p>@p.Product.Name</p></td>
+                    <td><p>@p.Quantity</p></td>
+                    <td><p>@p.UnitPrice</p></td>
+                </tr>
+                }
+        </tbody>
+    </table>
+</div>
