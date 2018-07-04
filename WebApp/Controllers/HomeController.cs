@@ -70,7 +70,7 @@ namespace WebApp.Controllers
                 SendMail(filename, email);
 
                 if (Convert.ToDateTime(fromDate).Date > Convert.ToDateTime(toDate).Date)
-                    ViewBag.Result = "Отчет был создан с ошибками..Возможно, вы указали неверный временной период.";
+                    ViewBag.Result = "Отчет был создан с ошибками.. Возможно, вы указали неверный временной период.";
                 else
                     ViewBag.Result = "Отчет упешно создан!";
             }
